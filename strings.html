@@ -11,7 +11,6 @@
 <body>  
     <header>
         <h1>Stringek</h1>
-        <h2> Adj meg stringeket légyszi</h2>
         
     </header>
     <div class="container">
@@ -64,7 +63,7 @@
     }
 
     var resultBox = document.getElementById("result-box");
-    resultBox.innerHTML = ""; // Clear previous results
+    resultBox.innerHTML = ""; 
 
     for (var j = 0; j < 3; j++) {
         var randomIndex = Math.floor(Math.random() * stringList.length);

@@ -20,16 +20,16 @@ h2,h3,h4{
 
 header {
     background-color: #291c1cd7;
-    padding: 50px 20px 40px; /* Updated bottom padding */
+    padding: 50px 20px 40px; 
     text-align: center;
     color: #f1f1f1;
 }
 
 .profile-image {
-    width: 160px; /* Set the desired width for your image */
-    height: 160px; /* Set the desired height for your image */
-    border-radius: 70%; /* Create a circular shape */
-    object-fit: cover; /* Ensure the image covers the circle without stretching */
+    width: 160px; 
+    height: 160px; 
+    border-radius: 70%; 
+    object-fit: cover; 
     position: absolute;
     top: 16%;
     left: 10%;
@@ -39,12 +39,12 @@ header {
 ul {
     list-style-type: none;
     margin: 0;
-    padding: 20px 0px 0px; /* Updated top padding */
+    padding: 20px 0px 0px; 
     width: 20%;
     background-color: #f1f1f1;
-    height: 100%; /* Full height */
-    position:fixed; /* Make it stick, even on scroll */
-    overflow: auto; /* Enable scrolling if the sidenav has too much content */
+    height: 100%; 
+    position:fixed; 
+    overflow: auto; 
 }
 
 nav ul {
@@ -66,12 +66,12 @@ nav ul li a {
 }
 
 nav ul li:hover {
-    background-color: #4b4545ad; /* This line sets the background color when hovering */
+    background-color: #4b4545ad; 
 }
 
 main {
     padding: 20px;
-    margin-left: 20%; /* Margin for the content to make space for the menu */
+    margin-left: 20%; 
 }
 
 footer {
