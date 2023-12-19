@@ -31,7 +31,7 @@ header {
     border-radius: 70%; 
     object-fit: cover; 
     position: absolute;
-    top: 16%;
+    top: 12%;
     left: 10%;
     transform: translate(-50%, -50%);
 }
