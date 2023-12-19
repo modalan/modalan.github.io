@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="hun">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" type="text/css" href="product.css">
+    <title>Termékek</title>
+    
+</head>
+<body>  
+    <header>
+        <h1>Termékek</h1>
+    </header>
+
+    <div class="container">
+        <p>
+            Add meg a termékek nevét és árát, hogy megtaláld a legolcsóbbat, az átlagárat és szórást.
+        </p>
+        <form id="productForm">
+            <label for="product1">1. termék neve:</label>
+            <input type="text" id="product1" placeholder="Írja be a termék nevét">
+            <label for="price1">1. termék ára:</label>
+            <input type="number" id="price1" placeholder="Írja be a termék árát">
+            <br>
+    
+            <label for="product2">2. termék neve:</label>
+            <input type="text" id="product2" placeholder="Írja be a termék nevét">
+            <label for="price2">2. termék ára:</label>
+            <input type="number" id="price2" placeholder="Írja be a termék árát">
+            <br>
+    
+            <label for="product3">3. termék neve:</label>
+            <input type="text" id="product3" placeholder="Írja be a termék nevét">
+            <label for="price3">3. termék ára:</label>
+            <input type="number" id="price3" placeholder="Írja be a termék árát">
+            <br>
+    
+            <label for="product4">4. termék neve:</label>
+            <input type="text" id="product4" placeholder="Írja be a termék nevét">
+            <label for="price4">4. termék ára:</label>
+            <input type="number" id="price4" placeholder="Írja be a termék árát">
+            <br>
+    
+            <label for="product5">5. termék neve:</label>
+            <input type="text" id="product5" placeholder="Írja be a termék nevét">
+            <label for="price5">5. termék ára:</label>
+            <input type="number" id="price5" placeholder="Írja be a termék árát">
+            <br>
+    
+            <!-- Repeat similar input fields for more products -->
+    
+            <button type="button" onclick="calculateStats()">Számolás!!</button>
+        </form>
+    
+        <div id="result-box">
+            <div id="cheapest-product"></div>
+            <div id="average-price"></div>
+            <div id="price-deviation"></div>
+        </div>
+    </div>
+    
+
+    <script>
+
+function calculateStats() {
+    var productPrices = [];
+    var productNames = [];
+
+    for (var i = 1; i <= 5; i++) {
+        var productName = document.getElementById("product" + i).value.trim();
+        var productPrice = parseFloat(document.getElementById("price" + i).value);
+
+        if (productName !== "" && !isNaN(productPrice)) {
+            productNames.push(productName);
+            productPrices.push(productPrice);
+        }
+    }
+
+    if (productPrices.length === 0) {
+        alert("Kérlek, írj be neveket és számokat!");
+        return;
+    }
+
+    var cheapestProductIndex = findCheapestProductIndex(productPrices);
+    var averagePrice = calculateAveragePrice(productPrices);
+    var priceDeviation = calculatePriceDeviation(productPrices, averagePrice);
+
+    displayResult("Legolcsóbb termék: " + productNames[cheapestProductIndex], "cheapest-product");
+    displayResult("Átlagár: " + averagePrice.toFixed(2), "average-price");
+    displayResult("Árak szórása: " + priceDeviation.toFixed(2), "price-deviation");
+}
+
+function findCheapestProductIndex(prices) {
+    return prices.indexOf(Math.min(...prices));
+}
+
+function calculateAveragePrice(prices) {
+    var sum = prices.reduce((acc, price) => acc + price, 0);
+    return sum / prices.length;
+}
+
+function calculatePriceDeviation(prices, averagePrice) {
+    var squaredDifferences = prices.map(price => Math.pow(price - averagePrice, 2));
+    var averageSquaredDifference = calculateAveragePrice(squaredDifferences);
+    return Math.sqrt(averageSquaredDifference);
+}
+
+function displayResult(message, elementId) {
+    var resultElement = document.getElementById(elementId);
+    resultElement.innerHTML = message;
+}
+
+    </script>
+</body>
+</html>

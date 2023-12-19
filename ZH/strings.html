@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" type="text/css" href="strings.css">
+    <title>Stringek</title>
+    
+</head>
+<body>  
+    <header>
+        <h1>Stringek</h1>
+        <h2> Adj meg stringeket légyszi</h2>
+        
+    </header>
+    <div class="container">
+        <h1>Random String Generátor</h1>
+        <p>
+            Adj meg 5 stringet, melyek 5-7 karakter hosszúak.
+        </p>
+        <p>
+            A program random kiválaszt 3-mat a megadottak közül.
+        </p>
+        <form id="stringForm">
+            <label for="string1">String 1:</label>
+            <input type="text" id="string1" maxlength="7" placeholder="Adj meg stringet (5-7 karakteres)">
+            <br>
+
+            <label for="string2">String 2:</label>
+            <input type="text" id="string2" maxlength="7" placeholder="Adj meg stringet (5-7 karakteres)">
+            <br>
+
+            <label for="string3">String 3:</label>
+            <input type="text" id="string3" maxlength="7" placeholder="Adj meg stringet (5-7 karakteres)">
+            <br>
+
+            <label for="string4">String 4:</label>
+            <input type="text" id="string4" maxlength="7" placeholder="Adj meg stringet (5-7 karakteres)">
+            <br>
+
+            <label for="string5">String 5:</label>
+            <input type="text" id="string5" maxlength="7" placeholder="Adj meg stringet (5-7 karakteres)">
+            <br>
+
+            <button type="button" onclick="generateRandomStrings()">Random Stringet kérek!!!</button>
+        </form>
+
+        <div id="result-box"></div>
+    </div>
+    <script>
+        function generateRandomStrings() {
+    var stringList = [];
+
+    for (var i = 1; i <= 5; i++) {
+        var input = document.getElementById("string" + i).value.trim();
+
+        if (input.length >= 5 && input.length <= 7) {
+            stringList.push(input);
+        } else {
+            alert("Helytelen input! Kérlek 5-7 karakteres stringet adj meg.");
+            return;
+        }
+    }
+
+    var resultBox = document.getElementById("result-box");
+    resultBox.innerHTML = ""; // Clear previous results
+
+    for (var j = 0; j < 3; j++) {
+        var randomIndex = Math.floor(Math.random() * stringList.length);
+        var randomString = stringList[randomIndex];
+        resultBox.innerHTML += "<p>" + randomString + "</p>";
+    }
+}
+    </script>
+</body>
+</html>
